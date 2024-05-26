@@ -64,29 +64,35 @@ router.get('/buyer', async (req, res) => {
     }
 });
 
-
 // Update property
-router.put('/:id', async (req, res) => {
+router.put('/', async (req, res) => {
     try {
+        const propertyId = req.body.propertyId;
         const property = await Property.findOneAndUpdate(
-            { _id: req.params.id, owner: req.user.userId },
+            { _id: propertyId, owner: req.user.userId },
             req.body,
             { new: true }
         );
+        if (!property) {
+            return res.status(404).send('Property not found or you do not have permission to update it');
+        }
         res.json(property);
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error.message);
     }
 });
 
 // Delete property
-router.delete('/:id', async (req, res) => {
+router.delete('/', async (req, res) => {
     try {
-        await Property.findOneAndDelete({ _id: req.params.id, owner: req.user.userId });
+        const propertyId = req.body.propertyId;
+        const property = await Property.findOneAndDelete({ _id: propertyId, owner: req.user.userId });
+        if (!property) {
+            return res.status(404).send('Property not found or you do not have permission to delete it');
+        }
         res.send('Property deleted');
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error.message);
     }
 });
-
 module.exports = router;
