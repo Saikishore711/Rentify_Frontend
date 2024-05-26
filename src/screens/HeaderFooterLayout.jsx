@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import TopNavBar from "../components/TopNavBar";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function HeaderFooterLayout() {
   return (
     <div className="!font-['Inter']">
-      <TopNavBar />
+      <Navbar />
       <main>
-        <div className="min-h-screen py-16 sm:py-24">
+        <div className="min-h-screen p-4">
           <Outlet /> {/* Renders the nested routes */}
         </div>
       </main>
