@@ -10,7 +10,8 @@ const PropertySchema = new mongoose.Schema({
     price: { type: Number, required: true },
     location: { type: String, required: true },
     nearbyHospitals: { type: String },
-    nearbyColleges: { type: String }
+    nearbyColleges: { type: String },
+    images: [{ type: String }] 
 });
 
 const Property = mongoose.model('Property', PropertySchema);

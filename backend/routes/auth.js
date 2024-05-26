@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../Models/user');
 
 const router = express.Router();
+const jwtSecret = process.env.jwtSecret
 
 // Register
 router.post('/register', async (req, res) => {
@@ -41,7 +42,7 @@ router.post('/login', async (req, res) => {
             role: user.role
         };
 
-        const token = jwt.sign(payload, "jwtSecret", { expiresIn: '1h' });
+        const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
         res.json({ token });
     } catch (error) {
         res.status(400).send({ error: 'Login failed', details: error.message });
