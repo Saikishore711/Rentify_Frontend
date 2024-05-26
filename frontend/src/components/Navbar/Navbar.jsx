@@ -34,13 +34,13 @@ export default function Navbar() {
   //   dispatch(loadUserData());
   // }, []); // eslint-disable-line
 
-  const navigation = GLOBAL_CONSTANTS?.userType == "SELLER" ? [
-    { key: "my_listings", icon: <FaHouse />, name: "My Listings", route: "/" },
-    { key: "about", icon: <FaCircleInfo />, name: "About", route: "/about" },
+  const navigation = GLOBAL_CONSTANTS?.userType == "seller" ? [
+    { key: "my_listings", icon: <FaHouse />, name: "My Listings", route: "/seller/my-listings" },
+    { key: "about", icon: <FaCircleInfo />, name: "About", route: "/seller/about" },
   ] : [
-    { key: "home", icon: <FaHouse />, name: "Home", route: "/" },
-    { key: "properties", icon: <FaHouse />, name: "Properties", route: "/" },
-    { key: "about", icon: <FaCircleInfo />, name: "About", route: "/about" },
+    { key: "home", icon: <FaHouse />, name: "Home", route: "/buyer/home" },
+    { key: "properties", icon: <FaHouse />, name: "Properties", route: "/buyer/properties" },
+    { key: "about", icon: <FaCircleInfo />, name: "About", route: "/buyer/about" },
   ];
 
   const userNavigation = [
