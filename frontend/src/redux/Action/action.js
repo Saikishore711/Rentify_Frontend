@@ -77,4 +77,18 @@ export const forget_password = (data, callback) => {
     }
   };
 
+  export const getProperties = async () => {
+    try{
+      const response = await axios.get(
+        `${GLOBAL_CONSTANTS?.backend_host}api/properties/buyer`,
+        {headers}
+      );
+      return response?.data;
+    }catch(err){
+      console.error("Error fetching properties",err);
+      return false;
+
+    }
+  }
+
 

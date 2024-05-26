@@ -1,0 +1,18 @@
+.product-list {
+    flex: 2;
+    display: flex;
+    gap: 20px;
+}
+ 
+.product {
+    background-color: rgb(255, 245, 245);
+    border: 1px solid #1b4e1f;
+    border-radius: 10%;
+    padding: 10px 60px;
+    text-align: center;
+    width: 33%;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
