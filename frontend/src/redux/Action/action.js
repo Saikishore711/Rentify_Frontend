@@ -3,6 +3,11 @@ import axios from "axios";
 import GLOBAL_CONSTANTS from "../../GlobalConstants";
 import { toast } from "react-toastify";
 
+const headers = {
+  "Content-type": "application/json",
+  Authorization: `${GLOBAL_CONSTANTS?.token}`,
+};
+
 // ?get-----------------------------------------------------------
 const getProductListData = (data) => ({
   type: types.PRODUCTS_LIST,
@@ -42,3 +47,34 @@ export const forget_password = (data, callback) => {
         });
     };
   };
+
+
+  export const login_api = async (data) => {
+    try {
+      const response = await axios.post(
+        `${GLOBAL_CONSTANTS?.backend_host}api/auth/login`,
+        JSON.stringify(data),
+        { headers }
+      );
+      return response?.data;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
+  export const register_api = async (data) => {
+    try {
+      const response = await axios.post(
+        `${GLOBAL_CONSTANTS?.backend_host}api/auth/register`,
+        JSON.stringify(data),
+        { headers }
+      );
+      return response?.data;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
+

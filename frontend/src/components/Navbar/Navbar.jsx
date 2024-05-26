@@ -61,7 +61,13 @@ export default function Navbar() {
 
   const handleItemClick = (item) => {
     setMobileMenuOpen(false);
-    navigate(item?.route);
+
+    if (item?.key == "signout") {
+      localStorage?.clear();
+      window.location.reload();
+    } else {
+      navigate(item?.route);
+    }
   };
 
   const handleAddPropertyClick = () => {

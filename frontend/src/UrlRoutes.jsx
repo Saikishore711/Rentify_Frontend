@@ -9,6 +9,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import Addproperty from "./screens/Seller/Addproperty";
 import SellerAbout from "./screens/Seller/SellerAbout";
 import MyListings from "./screens/Seller/MyListings";
+import GLOBAL_CONSTANTS from "./GlobalConstants";
 
 export default function Url_Routes() {
   axios.interceptors.response.use(
@@ -38,24 +39,40 @@ export default function Url_Routes() {
     },
   });
 
+  const redirectToUserUI = () => {
+    if(GLOBAL_CONSTANTS?.userType == "seller") {
+      return "/seller"
+    } else {
+      return "/buyer"
+    }
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {localStorage?.getItem("token") ? (
+            <>
+              <Route path="/buyer" element={<HeaderFooterLayout />}>
+                <Route index element={<BuyerHome />} />
+              </Route>
 
-          <Route path="/buyer" element={<HeaderFooterLayout />}>
-            <Route index element={<BuyerHome />} />
-          </Route>
+              <Route path="/seller" element={<HeaderFooterLayout />}>
+                <Route index element={<SellerHome />} />
+                <Route path="add-property" element={<Addproperty />} />
+                <Route path="my-listings" element={<MyListings />} />
+                <Route path="about" element={<SellerAbout />} />
+              </Route>
 
-          <Route path="/seller" element={<HeaderFooterLayout />}>
-            <Route index element={<SellerHome />} />
-            <Route path="add-property" element={<Addproperty />} />
-            <Route path="my-listings" element={<MyListings />} />
-            <Route path="about" element={<SellerAbout />} />
-          </Route>
+              <Route path="*" element={<Navigate to={redirectToUserUI()} replace={true} />} />
+            </>
+          ) : (
+            <>
+              <Route path="/" element={<Login />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+          )}
 
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>

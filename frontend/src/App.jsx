@@ -24,7 +24,7 @@ export default function App() {
         closeOnClick
         position={isMobileView ? "top-center" : "top-right"}
         toastClassName={isMobileView ? "rounded p-4 m-4" : "rounded-lg"}
-        theme={isMobileView ? "colored" : undefined}
+        theme={isMobileView ? "colored" : "light"}
       />
     </Provider>
   );

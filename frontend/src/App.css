@@ -7,6 +7,10 @@
   font-family: 'Inter', sans-serif !important;
 }
 
+input[type='text']:focus { box-shadow: none; }
+input[type='number']:focus { box-shadow: none; }
+input[type='tel']:focus { box-shadow: none; }
+
 /* Toaster custom styles ---------------------------------------------------------------- */
 
 .Toastify__close-button {
