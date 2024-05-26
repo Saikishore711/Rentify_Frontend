@@ -77,4 +77,38 @@ export const forget_password = (data, callback) => {
     }
   };
 
+  const set_property_listings = (data) => ({
+    type: types.PROPERTY_LISTINGS,
+    payload: data,
+  });
+
+  export const load_property_listings = async (dispatch = () => {}) => {
+    try {
+      dispatch(set_property_listings([]));
+      const response = await axios.get(
+        `${GLOBAL_CONSTANTS.backend_host}api/properties/seller`, { headers }
+      );
+      dispatch(set_property_listings(response?.data))
+      return response?.data;
+  
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
+  export const add_property = async (data) => {
+    try {
+      const response = await axios.post(
+        `${GLOBAL_CONSTANTS?.backend_host}api/properties`,
+        JSON.stringify(data),
+        { headers }
+      );
+      return response?.data;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
 
