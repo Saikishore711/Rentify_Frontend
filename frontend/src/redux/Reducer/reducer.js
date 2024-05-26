@@ -8,6 +8,8 @@ const initialState = {
 
   // products
   productList: [],
+
+  propertyListings: [],
 };
 
 const DataReducers = (state = initialState, action) => {
@@ -31,6 +33,11 @@ const DataReducers = (state = initialState, action) => {
       return {
         ...state,
         productList: action.payload.products,
+      };
+    case types.PROPERTY_LISTINGS:
+      return {
+        ...state,
+        property_listings: action.payload,
       };
     default:
       return state;

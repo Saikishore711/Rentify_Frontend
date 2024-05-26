@@ -11,7 +11,7 @@ export default function HeaderFooterLayout() {
           <Outlet /> {/* Renders the nested routes */}
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
