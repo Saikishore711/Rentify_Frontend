@@ -2,18 +2,20 @@
     "name": "mern-stack-template",
     "version": "1.0.0",
     "scripts": {
-      "start": "concurrently \"npm run server\" \"npm run client\"",
-      "setup": "npm i && cd frontend && npm i && cd ../backend && npm i && cd ..",
-      "server": "cd backend && npm start",
-      "client": "cd frontend && npm start",
- 
-      "build": "concurrently \"npm run server\" \"npm run build:client\"",
-      "build:client": "cd frontend && npm run build",
- 
-      "build:preview": "concurrently \"npm run server\" \"npm run build:client:preview\"",
-      "build:client:preview": "cd frontend && npm run build && npm run preview"
+        "start": "concurrently \"npm run server\" \"npm run client\"",
+        "setup": "npm i && cd frontend && npm i && cd ../backend && npm i && cd ..",
+        "server": "cd backend && npm start",
+        "client": "cd frontend && npm start",
+        "build": "concurrently \"npm run server\" \"npm run build:client\"",
+        "build:client": "cd frontend && npm run build",
+        "build:preview": "concurrently \"npm run server\" \"npm run build:client:preview\"",
+        "build:client:preview": "cd frontend && npm run build && npm run preview"
     },
     "dependencies": {
-      "concurrently": "^8.2.2"
+        "cloudinary": "^1.41.3",
+        "concurrently": "^8.2.2",
+        "fs": "^0.0.1-security",
+        "multer": "^1.4.5-lts.1",
+        "multer-storage-cloudinary": "^4.0.0"
     }
-  }
+}

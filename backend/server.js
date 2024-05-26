@@ -16,7 +16,6 @@ app.use(json());
 
 const username = process.env.MONGO_USERNAME;
 const password = process.env.MONGO_PASSWORD;
-
 const connectToDatabase = async () => {
   try {
     await mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.foo0ivc.mongodb.net/Rentify`, {
